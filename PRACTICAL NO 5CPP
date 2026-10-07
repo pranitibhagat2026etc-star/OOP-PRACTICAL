@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+    int real, imag;
+
+public:
+
+    // Function to accept complex number
+    void accept()
+    {
+        cout << "Enter real part: ";
+        cin >> real;
+
+        cout << "Enter imaginary part: ";
+        cin >> imag;
+    }
+
+    // Overloading << operator
+    friend ostream& operator<<(ostream& out, Complex c)
+    {
+        // Display complex number in a + bi form
+        out << c.real << " + " << c.imag << "i";
+
+        return out;
+    }
+};
+
+int main()
+{
+    Complex c;
+
+    // Accept complex number
+    c.accept();
+
+    // Display complex number using overloaded << operator
+    cout << "Complex number = " << c;
+
+    return 0;
+}
