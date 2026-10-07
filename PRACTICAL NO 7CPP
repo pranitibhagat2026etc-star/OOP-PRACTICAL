@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class String
+{
+    char *str;   // Pointer to dynamically allocated character array
+
+public:
+
+    // Constructor: dynamically allocate memory
+    String(const char *s)
+    {
+        str = new char[strlen(s) + 1];  // Allocate memory
+        strcpy(str, s);                 // Copy string into allocated memory
+    }
+
+    // Function to display the string
+    void display()
+    {
+        cout << "String = " << str << endl;
+    }
+
+    // Destructor: deallocate dynamically allocated memory
+    ~String()
+    {
+        delete[] str;   // Free the memory
+        cout << "Memory deallocated." << endl;
+    }
+};
+
+int main()
+{
+    // Create String object and pass a string to constructor
+    String s("Hello World");
+
+    // Display the string
+    s.display();
+
+    return 0;
+}
