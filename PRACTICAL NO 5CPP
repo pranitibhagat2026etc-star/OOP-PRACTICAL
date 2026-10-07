@@ -1,41 +1,50 @@
+```cpp
 #include <iostream>
 using namespace std;
 
-class Complex
+// Function to calculate factorial of an integer
+int factorial(int n)
 {
-    int real, imag;
+    int fact = 1;
 
-public:
+    // Calculate factorial
+    for (int i = 1; i <= n; i++)
+        fact = fact * i;
 
-    // Function to accept complex number
-    void accept()
-    {
-        cout << "Enter real part: ";
-        cin >> real;
+    return fact;
+}
 
-        cout << "Enter imaginary part: ";
-        cin >> imag;
-    }
+// Function to calculate factorial of a long integer
+long int factorial(long int n)
+{
+    long int fact = 1;
 
-    // Overloading << operator
-    friend ostream& operator<<(ostream& out, Complex c)
-    {
-        // Display complex number in a + bi form
-        out << c.real << " + " << c.imag << "i";
+    // Calculate factorial
+    for (long int i = 1; i <= n; i++)
+        fact = fact * i;
 
-        return out;
-    }
-};
+    return fact;
+}
 
 int main()
 {
-    Complex c;
+    int a;
+    long int b;
 
-    // Accept complex number
-    c.accept();
+    // Accept integer input
+    cout << "Enter an integer: ";
+    cin >> a;
 
-    // Display complex number using overloaded << operator
-    cout << "Complex number = " << c;
+    // Accept long integer input
+    cout << "Enter a long integer: ";
+    cin >> b;
+
+    // Call factorial function for integer
+    cout << "Factorial of integer = " << factorial(a) << endl;
+
+    // Call factorial function for long integer
+    cout << "Factorial of long integer = " << factorial(b) << endl;
 
     return 0;
 }
+```
