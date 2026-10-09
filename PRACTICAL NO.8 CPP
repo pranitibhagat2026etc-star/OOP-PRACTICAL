@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+
+// First base class: stores basic employee details
+class EmployeeInfo {
+protected:
+    int id;
+    std::string name;
+    double salary;
+};
+
+// Second base class: stores appraisal percentage
+class AppraisalInfo {
+protected:
+    double percentage;
+};
+
+// Derived class: uses multiple inheritance to combine both base classes
+class FinalSalary : public EmployeeInfo, public AppraisalInfo {
+public:
+    // Takes input for employee and appraisal details
+    void getDetails() {
+        std::cout << "Enter ID: ";
+        std::cin >> id;
+        
+        std::cout << "Enter Name: ";
+        std::cin >> name;
+        
+        std::cout << "Enter Basic Salary: ";
+        std::cin >> salary;
+        
+        std::cout << "Enter Appraisal Percentage: ";
+        std::cin >> percentage;
+    }
+
+    // Calculates revised salary and displays all results
+    void displayResult() {
+        // Calculate new salary after appraisal
+        double newSalary = salary + (salary * percentage / 100);
+
+        // Print final details
+        std::cout << "\nID: " << id << std::endl;
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "Old Salary: " << salary << std::endl;
+        std::cout << "New Salary: " << newSalary << std::endl;
+    }
+};
+
+int main() {
+    FinalSalary emp; // Create object of derived class
+    
+    emp.getDetails();    // Input details
+    emp.displayResult(); // Calculate and show output
+
+    return 0;
+}
