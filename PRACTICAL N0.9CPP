@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+
+// Base class
+class Customer {
+protected:
+    std::string name;
+    double bill;
+
+public:
+    Customer(std::string n, double b) : name(n), bill(b) {}
+
+    // Virtual function
+    virtual void calculateDiscount() {
+        std::cout << name << " Total: ₹" << bill << std::endl;
+    }
+};
+
+// Derived class 1
+class RegularCustomer : public Customer {
+public:
+    RegularCustomer(std::string n, double b) : Customer(n, b) {}
+
+    void calculateDiscount() override {
+        double discount = bill * 0.05; // 5% discount
+        std::cout << "Regular Customer: " << name << std::endl;
+        std::cout << "Final Bill: ₹" << bill - discount << std::endl;
+    }
+};
+
+// Derived class 2
+class PremiumCustomer : public Customer {
+public:
+    PremiumCustomer(std::string n, double b) : Customer(n, b) {}
+
+    void calculateDiscount() override {
+        double discount = bill * 0.15; // 15% discount
+        std::cout << "Premium Customer: " << name << std::endl;
+        std::cout << "Final Bill: ₹" << bill - discount << std::endl;
+    }
+};
+
+int main() {
+    // Objects
+    RegularCustomer c1("Aarav", 2000);
+    PremiumCustomer c2("Priya", 2000);
+
+    // Base class pointer demonstrating run-time polymorphism
+    Customer* ptr;
+
+    ptr = &c1;
+    ptr->calculateDiscount(); // Calls RegularCustomer function
+
+    std::cout << std::endl;
+
+    ptr = &c2;
+    ptr->calculateDiscount(); // Calls PremiumCustomer function
+
+    return 0;
+}
