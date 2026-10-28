@@ -1,0 +1,46 @@
+#include <iostream>
+#include <fstream>  // Header file for file handling
+#include <string>
+using namespace std;
+
+int main()
+{
+    string source, destination;
+    char ch;
+
+    // Enter the source file name
+    cout << "Enter source file name: ";
+    cin >> source;
+
+    // Enter the destination file name
+    cout << "Enter destination file name: ";
+    cin >> destination;
+
+    // Open the source file for reading
+    ifstream fin(source);
+
+    // Open the destination file for writing
+    ofstream fout(destination);
+
+    // Check if both files opened successfully
+    if (!fin || !fout)
+    {
+        cout << "Error opening file!";
+        return 1;
+    }
+
+    // Copy contents character by character
+    while (fin.get(ch))
+    {
+        fout.put(ch);
+    }
+
+    // Close both files
+    fin.close();
+    fout.close();
+
+    // Display success message
+    cout << "File copied successfully!";
+
+    return 0;
+}
