@@ -1,0 +1,23 @@
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+int main() {
+    double discount;
+
+    cout << "Enter discount percentage: ";
+    cin >> discount;
+
+    try {
+        if (discount < 0 || discount > 100) {
+            throw out_of_range("Discount must be between 0 and 100.");
+        }
+
+        cout << "Valid discount: " << discount << "%" << endl;
+    }
+    catch (const out_of_range& e) {
+        cout << "Exception: " << e.what() << endl;
+    }
+
+    return 0;
+}
