@@ -1,0 +1,39 @@
+#include <iostream>  // Header file for input and output
+using namespace std;
+
+// Declaration of first namespace
+namespace First
+{
+    int a = 10;  // Variable inside First namespace
+
+    void display()
+    {
+        cout << "Value of a = " << a << endl;
+    }
+}
+
+// Declaration of second namespace
+namespace Second
+{
+    int b = 20;  // Variable inside Second namespace
+
+    void display()
+    {
+        cout << "Value of b = " << b << endl;
+    }
+}
+
+int main()
+{
+    // Calling display() from First namespace
+    First::display();
+
+    // Calling display() from Second namespace
+    Second::display();
+
+    // Accessing variables using scope resolution operator
+    cout << "Value of a = " << First::a << endl;
+    cout << "Value of b = " << Second::b << endl;
+
+    return 0;  // End of the program
+}
